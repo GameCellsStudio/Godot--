@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://bhj3n1q2g8vla"]
+
+[ext_resource type="PackedScene" uid="uid://bre03hkioqcrs" path="res://场景/火箭.tscn" id="1_vtj6c"]
+[ext_resource type="PackedScene" uid="uid://hhna8pceuyre" path="res://场景/发射台.tscn" id="2_wyx1x"]
+[ext_resource type="PackedScene" uid="uid://dgkinkeafmiq3" path="res://场景/着陆台.tscn" id="3_cbbbl"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_q61nh"]
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_x7pkj"]
+sky_material = SubResource("ProceduralSkyMaterial_q61nh")
+
+[sub_resource type="Environment" id="Environment_u06wh"]
+background_mode = 2
+sky = SubResource("Sky_x7pkj")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_brr7c"]
+albedo_color = Color(0.49597, 0.342216, 0.271139, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_06wbu"]
+albedo_color = Color(0.61, 0.0549, 0.0549, 1)
+
+[node name="关卡_02" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_u06wh")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.989016, 0.147809, 0, -0.147809, 0.989016, 0, 5.58, 11.57)
+
+[node name="地面" type="CSGBox3D" parent="." groups=["障碍物"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -4, 0)
+use_collision = true
+size = Vector3(40, 8, 5)
+material = SubResource("StandardMaterial3D_brr7c")
+
+[node name="火箭" parent="." instance=ExtResource("1_vtj6c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.077, 1.37815, 0)
+
+[node name="发射台" parent="." instance=ExtResource("2_wyx1x")]
+
+[node name="着陆台" parent="." instance=ExtResource("3_cbbbl")]
+"下一关场景路径" = "res://场景/关卡_01.tscn"
+
+[node name="障碍物" type="CSGBox3D" parent="." groups=["障碍物"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
+use_collision = true
+size = Vector3(3, 5, 5)
+material = SubResource("StandardMaterial3D_06wbu")

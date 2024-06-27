@@ -1,27 +1,23 @@
 [gd_scene load_steps=8 format=3 uid="uid://bvybky8bnq0cd"]
 
 [ext_resource type="PackedScene" uid="uid://bre03hkioqcrs" path="res://场景/火箭.tscn" id="1_t0wfg"]
+[ext_resource type="PackedScene" uid="uid://hhna8pceuyre" path="res://场景/发射台.tscn" id="2_530mp"]
+[ext_resource type="PackedScene" uid="uid://dgkinkeafmiq3" path="res://场景/着陆台.tscn" id="3_xmgtr"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0g0fc"]
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_x7pkj"]
+[sub_resource type="Sky" id="Sky_6jbri"]
 sky_material = SubResource("ProceduralSkyMaterial_0g0fc")
 
 [sub_resource type="Environment" id="Environment_76i8c"]
 background_mode = 2
-sky = SubResource("Sky_x7pkj")
+sky = SubResource("Sky_6jbri")
 tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ijqo2"]
 albedo_color = Color(0.49597, 0.342216, 0.271139, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xcqkt"]
-albedo_color = Color(0.283495, 0.400193, 0.898138, 1)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t0mrd"]
-albedo_color = Color(0.42115, 0.826341, 0.481014, 1)
 
 [node name="关卡_01" type="Node3D"]
 
@@ -44,14 +40,7 @@ use_collision = true
 size = Vector3(40, 8, 5)
 material = SubResource("StandardMaterial3D_ijqo2")
 
-[node name="发射台" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0.2, 0)
-use_collision = true
-size = Vector3(3, 0.4, 3)
-material = SubResource("StandardMaterial3D_xcqkt")
+[node name="发射台" parent="." instance=ExtResource("2_530mp")]
 
-[node name="着陆台" type="CSGBox3D" parent="." groups=["着陆台"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.2, 0)
-use_collision = true
-size = Vector3(3, 0.4, 3)
-material = SubResource("StandardMaterial3D_t0mrd")
+[node name="着陆台" parent="." instance=ExtResource("3_xmgtr")]
+"下一关场景路径" = "res://场景/关卡_02.tscn"

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgkinkeafmiq3"]
+
+[ext_resource type="Script" path="res://脚本/着陆台.gd" id="1_jcds7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t0mrd"]
+albedo_color = Color(0.42115, 0.826341, 0.481014, 1)
+
+[node name="着陆台" type="CSGBox3D" groups=["着陆台"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.2, 0)
+use_collision = true
+size = Vector3(3, 0.4, 3)
+material = SubResource("StandardMaterial3D_t0mrd")
+script = ExtResource("1_jcds7")
+"下一关场景路径" = "<null>"
