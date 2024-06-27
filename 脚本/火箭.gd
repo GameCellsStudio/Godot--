@@ -35,6 +35,7 @@ func 坠毁() -> void:
 	is_explosion = true
 	
 	print("KBOOM~火箭坠毁了！")
+	call_deferred("set_contact_monitor",false)
 	await get_tree().create_timer(1.5).timeout
 	call_deferred("延迟重载关卡")
 	
