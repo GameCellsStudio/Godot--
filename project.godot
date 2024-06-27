@@ -15,6 +15,10 @@ run/main_scene="res://场景/关卡_01.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Muisc="*res://场景/Muisc.tscn"
+
 [global_group]
 
 "着陆台"="胜利条件"

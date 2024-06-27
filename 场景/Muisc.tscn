@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1sd4a1ecpdwe"]
+
+[ext_resource type="AudioStream" uid="uid://e5duxctyu3w6" path="res://音乐/背景音乐.mp3" id="1_dswf5"]
+
+[node name="背景音乐" type="Node"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_dswf5")
+volume_db = -30.0
+autoplay = true
