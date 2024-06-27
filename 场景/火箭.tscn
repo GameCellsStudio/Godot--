@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://bre03hkioqcrs"]
+
+[ext_resource type="Script" path="res://脚本/火箭.gd" id="1_cawt8"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_q5xoj"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_b7vxw"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_2vwwg"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_kow8l"]
+
+[node name="火箭" type="RigidBody3D"]
+axis_lock_linear_z = true
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+contact_monitor = true
+max_contacts_reported = 5
+linear_damp = 1.0
+angular_damp = 3.0
+script = ExtResource("1_cawt8")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.804424, 0, 0, 0, 1.13133, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("CylinderShape3D_q5xoj")
+
+[node name="箭头" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 1.0637, 0)
+mesh = SubResource("PrismMesh_b7vxw")
+
+[node name="主体" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, -0.100488, 0)
+mesh = SubResource("CylinderMesh_2vwwg")
+
+[node name="底座" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.2, 0, 0, 0, 0.386, 0, 0, 0, 1.2, 0, -0.93642, 0)
+mesh = SubResource("BoxMesh_kow8l")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
