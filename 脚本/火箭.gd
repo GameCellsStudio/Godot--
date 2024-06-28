@@ -39,8 +39,9 @@ func 坠毁() -> void:
 	
 
 func 完成关卡(下一关场景文件:String) -> void:
-	print("叮当！你已安全着陆！")
+	print("叮当！恭喜你已成功着陆！")
 	set_process(false)
+	call_deferred("set_contact_monitor",false)
 	await get_tree().create_timer(1.0).timeout
 	call_deferred("延迟加载关卡",下一关场景文件)
 	

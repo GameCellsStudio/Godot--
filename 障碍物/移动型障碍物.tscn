@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckvpdlgelvcmo"]
+
+[ext_resource type="Script" path="res://脚本/移动型障碍物.gd" id="1_6rlux"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3lkib"]
+albedo_color = Color(0.863891, 0.000361366, 0.811278, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_15r4k"]
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_edu0d"]
+points = PackedVector3Array(-0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5)
+
+[node name="移动型障碍物" type="AnimatableBody3D" groups=["障碍物"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+script = ExtResource("1_6rlux")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_3lkib")
+mesh = SubResource("BoxMesh_15r4k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+shape = SubResource("ConvexPolygonShape3D_edu0d")
