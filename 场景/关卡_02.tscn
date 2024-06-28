@@ -46,7 +46,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.077, 1.37815, 0)
 [node name="发射台" parent="." instance=ExtResource("2_wyx1x")]
 
 [node name="着陆台" parent="." instance=ExtResource("3_cbbbl")]
-"下一关场景路径" = "res://场景/关卡_01.tscn"
+"下一关场景路径" = "res://场景/关卡_03.tscn"
 
 [node name="障碍物" type="CSGBox3D" parent="." groups=["障碍物"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)

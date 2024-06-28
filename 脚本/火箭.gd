@@ -7,19 +7,18 @@ extends RigidBody3D
 ##控制左右旋转的速度
 @export var 扭力 := 100.0
 
-var is_explosion = false
 
 func _ready() -> void:
 	pass
 
 func _process(delta: float) -> void:
-	if not is_explosion:
-		if Input.is_action_pressed("起飞"):
-			apply_central_force(basis.y * delta * 推力)
-		if Input.is_action_pressed("左旋转"):
-			apply_torque(Vector3.BACK * 扭力 * delta)
-		if Input.is_action_pressed("右旋转"):
-			apply_torque(-Vector3.BACK * 扭力 * delta)
+	
+	if Input.is_action_pressed("起飞"):
+		apply_central_force(basis.y * delta * 推力)
+	if Input.is_action_pressed("左旋转"):
+		apply_torque(Vector3.BACK * 扭力 * delta)
+	if Input.is_action_pressed("右旋转"):
+		apply_torque(-Vector3.BACK * 扭力 * delta)
 
 
 func _on_body_entered(body: Node) -> void:
@@ -31,9 +30,8 @@ func _on_body_entered(body: Node) -> void:
 func 坠毁() -> void:
 	if not 坠毁音效.playing:
 		坠毁音效.play()
-		
-	is_explosion = true
 	
+	set_process(false)
 	print("KBOOM~火箭坠毁了！")
 	call_deferred("set_contact_monitor",false)
 	await get_tree().create_timer(1.5).timeout
@@ -42,6 +40,8 @@ func 坠毁() -> void:
 
 func 完成关卡(下一关场景文件:String) -> void:
 	print("叮当！你已安全着陆！")
+	set_process(false)
+	await get_tree().create_timer(1.0).timeout
 	call_deferred("延迟加载关卡",下一关场景文件)
 	
 	
