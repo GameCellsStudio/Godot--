@@ -1,6 +1,7 @@
 extends RigidBody3D
 
 @onready var 坠毁音效: AudioStreamPlayer = $"坠毁音效"
+@onready var 成功音效: AudioStreamPlayer = $"成功音效"
 
 ##移动时施加的垂直力大小
 @export_range(750.0,2500.0) var 推力 := 1000.0
@@ -40,9 +41,12 @@ func 坠毁() -> void:
 
 func 完成关卡(下一关场景文件:String) -> void:
 	print("叮当！恭喜你已成功着陆！")
+	if not 成功音效.playing:
+		成功音效.play()
+	
 	set_process(false)
 	call_deferred("set_contact_monitor",false)
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(1.5).timeout
 	call_deferred("延迟加载关卡",下一关场景文件)
 	
 	

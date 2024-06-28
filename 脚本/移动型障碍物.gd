@@ -11,6 +11,3 @@ func _ready() -> void:
 	tween.set_trans(Tween.TRANS_SINE) #设置为正弦函数插值
 	tween.tween_property(self,"global_position",global_position + 目的地坐标,持续时间)
 	tween.tween_property(self,"global_position",global_position,持续时间)
-
-func _process(delta: float) -> void:
-	pass

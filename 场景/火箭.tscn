@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bre03hkioqcrs"]
+[gd_scene load_steps=8 format=3 uid="uid://bre03hkioqcrs"]
 
 [ext_resource type="Script" path="res://脚本/火箭.gd" id="1_cawt8"]
 [ext_resource type="AudioStream" uid="uid://darvrc0x4e1ei" path="res://音效/爆炸.wav" id="2_olqoc"]
+[ext_resource type="AudioStream" uid="uid://dfljp8776n8at" path="res://音效/成功.mp3" id="3_rughh"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_q5xoj"]
 
@@ -39,5 +40,9 @@ mesh = SubResource("BoxMesh_kow8l")
 
 [node name="坠毁音效" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_olqoc")
+
+[node name="成功音效" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_rughh")
+volume_db = -10.036
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
